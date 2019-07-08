@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <script>
+        var memory="";
+        
+        function getText (id) {
+	    var e = document.getElementById (id);
+    	return e.innerHTML;
+    }
+        function setText (id, text) {
+    	var e = document.getElementById (id);
+	    e.innerHTML = text;
+    }
+        function addText (id, text) {
+            var e = document.getElementById (id);
+            e.innerHTML = getText (id) + text;
+        }
+        function equals (id) {
+            var e = document.getElementById (id);
+            var ans = eval(e.innerHTML);
+            e.innerHTML = ans;
+        }
+        
+        function erase (id) {
+            var e = document.getElementById (id);
+            e.innerHTML = "";
+        }
+        
+        function back (id) {
+            var e = document.getElementById (id);
+            var current = e.innerHTML;
+            var newStr = current.substring(0, current.length-1);
+            e.innerHTML = newStr;
+        }
+        function MS (id) {
+            var e = document.getElementById (id);
+            memory = e.innerHTML;
+        }
+        function MR (id) {
+            var e = document.getElementById (id);
+            e.innerHTML = memory;
+        }
+        function MC (id) {
+            memory="";
+        }
+    </script>
+
+<title>Calculator</title>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Abhaya+Libre');
+body {
+    text-align: center;
+    background-color: tan;
+    border-radius: 5px;
+}
+
+div#disp {
+    text-align: right;
+    font-size: 36px;
+    height: 50px;
+    width: 340px;
+    margin: auto;
+    background-color: gray;
+    color: white;
+    border-radius: 5px;
+    font-family: Abhaya Libre;
+}
+
+table {
+    border-collapse: collapse;
+    height: 410px;
+    width: 350px;
+    margin: auto;
+    background-color: brown;
+    border-radius: 5px;
+    box-shadow: 8px 8px 4px #800000;
+}
+
+td {
+    /*border: 1px solid brown;*/
+}
+
+tr {
+}
+
+button{
+    width: 55px;
+    height: 55px;
+    font-size: 24px;
+    font-family: Abhaya Libre;
+    background-color: skyblue;
+    border-radius: 5px;
+    box-shadow: 3px 3px 1px #888888;
+}
+
+</style>
+</head>
+<body>
+<table>
+    <tr>
+        <td colspan="5"><div id="disp"></div></td>
+    </tr>
+    <tr>
+        <td><button onclick="MC('disp')">MC</button></td>
+        <td><button onclick="MS('disp')">MS</button></td>
+        <td><button onclick="MR('disp')">MR</button></td>
+        <td><button style="font-size: 20px;" onclick="erase('disp');">clear</button></td>
+        <td><button style="font-size: 20px;" onclick="back('disp')">back</button></td>
+    </tr>
+    <tr>
+        <td class="number"><button onclick="addText('disp', '7');">7</button></td>
+        <td class="number"><button onclick="addText('disp', '8')">8</button></td>
+        <td class="number"><button onclick="addText('disp', '9')">9</button></td>
+        <td class="operation"><button onclick="addText('disp', '+')">+</button></td>
+        <td class="operation"><button onclick="addText('disp', '(')">(</button></td>
+    </tr>
+    <tr>
+        <td class="number"><button onclick="addText('disp', '4')">4</button></td>
+        <td class="number"><button onclick="addText('disp', '5')">5</button></td>
+        <td class="number"><button onclick="addText('disp', '6')">6</button></td>
+        <td class="operation"><button onclick="addText('disp', '-')">-</button></td>
+        <td class="operation"><button onclick="addText('disp', ')')">)</button></td>
+    </tr>
+    <tr>
+        <td class="number"><button onclick="addText('disp', '1')">1</button></td>
+        <td class="number"><button onclick="addText('disp', '2')">2</button></td>
+        <td class="number"><button onclick="addText('disp', '3')">3</button></td>
+        <td class="operation"><button onclick="addText('disp', '*')">*</button></td>
+        <td class="operation" rowspan="2"><button style="height: 125px;" onclick="equals('disp')">=</button></td>
+    </tr>
+    <tr>
+        <td class="operation" colspan="2"><button style="width: 125px;" onclick="addText('disp', '0')">0</button></td>
+        <td class="operation"><button onclick="addText('disp', '.')">.</button></td>
+        <td class="operation"><button onclick="addText('disp', '/')">/</button></td>
+    </tr>
+    </table>
+    
+<p style="font-family: Abhaya Libre; font-size: 20px;">Kassen Qian</p>
+
+</body>
+</html>
